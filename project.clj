@@ -7,7 +7,7 @@
             :comments "same as Clojure"}
   :description "Geospatial operations over points, lines, polys, geohashes, etc."
   :dependencies
-  [[org.clojure/math.numeric-tower "0.0.4"]
+  [[org.clojure/math.numeric-tower "0.1.0"]
    [ch.hsr/geohash "1.4.0"]
    [com.uber/h3 "3.6.3"]
    [org.locationtech.proj4j/proj4j "1.1.0"]
