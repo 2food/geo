@@ -15,8 +15,8 @@
   functions over shapes for their heights, centers, areas, etc. Can also
   compute relationships between shapes: their intersections, contains, disjoint
   statuses, etc."
-  (:use [clojure.math.numeric-tower :only [abs]])
-  (:require [geo.crs :as crs]
+  (:require [clojure.math.numeric-tower :as numeric-tower]
+            [geo.crs :as crs]
             [geo.jts :as jts])
   (:import (ch.hsr.geohash WGS84Point)
            (ch.hsr.geohash.util VincentyGeodesy)
@@ -318,8 +318,8 @@
   ; algorithm, which causes distances at the poles to return
   ; bad results. In these cases, use spatial4j's spherical vincenty
   ; distance calculator.
- (if (and (<= (abs (latitude a)) 89.99999999999999)
-          (<= (abs (latitude b)) 89.99999999999999))
+ (if (and (<= (numeric-tower/abs (latitude a)) 89.99999999999999)
+          (<= (numeric-tower/abs (latitude b)) 89.99999999999999))
     (VincentyGeodesy/distanceInMeters
      (to-geohash-point a)
      (to-geohash-point b))
